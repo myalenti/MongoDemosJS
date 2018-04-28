@@ -1,0 +1,28 @@
+{
+  "name": "mongo_demo_js",
+  "version": "1.0.0",
+  "description": "MongoDB JS demos for Node",
+  "main": "index.js",
+  "dependencies": {
+    mongodb : "^3.0.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myalenti/DemoScripts.git"
+  },
+  "keywords": [
+    "Node",
+    "MongoDB",
+    "JS",
+    "Demo"
+  ],
+  "author": "Mark Yalenti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myalenti/DemoScripts/issues"
+  },
+  "homepage": "https://github.com/myalenti/DemoScripts#readme"
+}
