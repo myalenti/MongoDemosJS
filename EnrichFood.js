@@ -23,10 +23,32 @@ function newDoc(r){
     return doc
 }
 
-var db = 'food';
-var targetCol = 'prod';
+var connString = "mongodb://localhost:27017,localhost:27018,localhost:27019/?replicaSet=rsDemo"
+var assert = require('assert');
+var mongoClient = require('mongodb').MongoClient
+
+var dbName = 'food';
+var targetCol = 'prod2';
 var sourceCol = 'production';
-var cur = db.production.find()
-while (cur.hasNext){
-    db.prod.insert( newDoc(cur.next()))
-}
+
+mongoClient.connect(connString, function( err, client){
+    assert.equal(null, err);
+    console.log("Connected Successfully to ");
+    var db = client.db(dbName);
+    console.log("Working with handle to DB instance " + db.databaseName)
+    var collTo = db.collection(targetCol);
+    var collFrom = db.collection(sourceCol);
+    var cur = collFrom.find();
+    cur.count( function(err, result){ console.log("count is " + result)});
+
+    cur.forEach( function(doc){
+        collTo.insert(newDoc(doc), function(err, result) { return result})
+    } ,
+        function(){
+        client.close();
+        console.log("done");
+    });
+
+});
+
+

@@ -4,7 +4,8 @@
   "description": "MongoDB JS demos for Node",
   "main": "index.js",
   "dependencies": {
-    mongodb : "^3.0.7"
+    "mongodb" : "^3.0.7",
+    "assert" : "^1.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
